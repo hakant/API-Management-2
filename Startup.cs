@@ -51,7 +51,7 @@
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Employee API", Version = "v1" });
+                c.SwaggerDoc("v2", new Info { Title = "Employee API", Version = "v2" });
                 c.IncludeXmlComments(XmlCommentsFilePath);
             });
 
@@ -92,7 +92,7 @@
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Employee API V1");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Employee API V2");
             });
         }
 

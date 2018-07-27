@@ -29,6 +29,12 @@
         [Required]
         [StringLength( 25 )]
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email address for a person.
+        /// </summary>
+        /// <value>The person's email address.</value>
+        public string Email { get; set; }
     }
 }
 

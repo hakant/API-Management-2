@@ -3,6 +3,7 @@
     using AspNetCore.Routing;
     using Microsoft.AspNetCore.Mvc;
     using Models;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Represents a RESTful people service.
@@ -10,6 +11,45 @@
     [Route( "api/[controller]" )]
     public class PeopleController : Controller
     {
+        const string ByIdRouteName = "GetPersonById";
+
+        /// <summary>
+        /// Gets all people.
+        /// </summary>
+        /// <returns>All available people.</returns>
+        /// <response code="200">The successfully retrieved people.</response>
+        [HttpGet]
+        [ProducesResponseType( typeof( IEnumerable<Person> ), 200 )]
+        public IActionResult Get()
+        {
+            var people = new[]
+            {
+                new Person()
+                {
+                    Id = 1,
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Email = "john.doe@somewhere.com"
+                },
+                new Person()
+                {
+                    Id = 2,
+                    FirstName = "Bob",
+                    LastName = "Smith",
+                    Email = "bob.smith@somewhere.com"
+                },
+                new Person()
+                {
+                    Id = 3,
+                    FirstName = "Jane",
+                    LastName = "Doe",
+                    Email = "jane.doe@somewhere.com"
+                }
+            };
+
+            return Ok( people );
+        }
+
         /// <summary>
         /// Gets a single person.
         /// </summary>
@@ -17,7 +57,7 @@
         /// <returns>The requested person.</returns>
         /// <response code="200">The person was successfully retrieved.</response>
         /// <response code="404">The person does not exist.</response>
-        [HttpGet( "{id:int}" )]
+        [HttpGet( "{id:int}", Name = ByIdRouteName )]
         [ProducesResponseType( typeof( Person ), 200 )]
         [ProducesResponseType( 404 )]
         public IActionResult Get( int id ) =>
@@ -25,7 +65,8 @@
                 {
                     Id = id,
                     FirstName = "John",
-                    LastName = "Doe"
+                    LastName = "Doe",
+                    Email = "john.doe@somewhere.com"
                 }
             );
     }
