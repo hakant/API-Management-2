@@ -35,6 +35,12 @@
         /// </summary>
         /// <value>The person's email address.</value>
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets the telephone number for a person.
+        /// </summary>
+        /// <value>The person's telephone number.</value>
+        public string Phone { get; set; }
     }
 }
 
